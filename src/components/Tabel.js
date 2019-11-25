@@ -10,14 +10,14 @@ import Tablebody from './Tablebody';
 const Tabel = ({ getUsers, users: { users, loading } }) => {
   useEffect(() => {
     getUsers();
-  }, []);
+  }, [getUsers]);
 
   return (
     <Fragment>
       {users === null && loading ? (
         <Spinner />
       ) : (
-        <table className='table'>
+        <table className='table table-borderless'>
           <thead>
             <Tablehead />
           </thead>
@@ -32,7 +32,7 @@ const Tabel = ({ getUsers, users: { users, loading } }) => {
 
 Tabel.propTypes = {
   getUsers: PropTypes.func,
-  users: PropTypes.array
+  users: PropTypes.object
 };
 
 const mapStateToProps = state => ({

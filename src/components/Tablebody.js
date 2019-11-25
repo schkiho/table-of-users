@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 const Tablebody = ({ users: { users, loading } }) => {
-  console.log(users, loading);
   return (
     <Fragment>
       {users.map(item => (

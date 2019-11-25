@@ -1,19 +1,31 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
-const Tablehead = props => {
+const Tablehead = ({ users: { users, loading } }) => {
+  const getUserKeys = () => {
+    let headers = Object.keys(users[0])
+      .copyWithin(4, 6)
+      .slice(1, 5);
+
+    return headers.map((key, index) => {
+      return <th key={index}>{key.toUpperCase()}</th>;
+    });
+  };
+
   return (
-    <thead>
-      <tr>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-      </tr>
-    </thead>
+    <Fragment>
+      <tr className='bg-success'>{getUserKeys()}</tr>
+    </Fragment>
   );
 };
 
-Tablehead.propTypes = {};
+Tablehead.propTypes = {
+  users: PropTypes.object
+};
 
-export default Tablehead;
+const mapStateToProps = state => ({
+  users: state.users
+});
+
+export default connect(mapStateToProps, null)(Tablehead);
