@@ -17,7 +17,7 @@ const Tabel = ({ getUsers, users: { users, loading } }) => {
       {users === null && loading ? (
         <Spinner />
       ) : (
-        <table>
+        <table className='table'>
           <thead>
             <Tablehead />
           </thead>
