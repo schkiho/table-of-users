@@ -4,17 +4,16 @@ import PropTypes from 'prop-types';
 export const Tablebody = ({ data, searchTerm }) => {
   const filteredUser = () => {
     if (searchTerm !== '') {
-      let s = data.filter(item =>
+      let filtered = data.filter(item =>
         item.name.toLowerCase().startsWith(searchTerm.toLowerCase(), 0)
       );
-      return s;
+      return filtered;
     } else if (searchTerm === '') {
       return data;
     }
   };
 
   const userFiltered = filteredUser();
-  console.log('afterfilter', userFiltered);
 
   return (
     <Fragment>

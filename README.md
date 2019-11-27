@@ -37,32 +37,38 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+### `fetch Data from API`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+For fetching data from the jsonplaceholder API i used the axios libary.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### `state management`
 
-### Code Splitting
+For the state managment i choosed redux using:
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+react-redux
+redux
+redux-thunk
 
-### Analyzing the Bundle Size
+to have the fetched data in a stable state i can work with.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+### `components and usage`
 
-### Making a Progressive Web App
+I'm using functional components instead of classbased components with the react-hooks useState and useEffect :
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+in the Table component UseEffect instead of componentDidMount for the redux action to get the data from the api and store it in the state
 
-### Advanced Configuration
+and in the same component also useState to store the value of the searchfield in a local state which i send as props to the Tablebody component where i handle the output
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+Also using stateless components to reduce the amount of code to make it more readable for others.
 
-### Deployment
+### `search option`
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+the output is handled through a filter function which show all users on default and on change only the searched users.
 
-### `npm run build` fails to minify
+### `prop validation`
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Also used Proptypes to validate the props i'm using.
+
+### `styling`
+
+For styling of the components i choosed the bootstrap libary and just for the container a bit CSS.

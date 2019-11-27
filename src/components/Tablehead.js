@@ -1,8 +1,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 
-const Tablehead = ({ users: { users, loading } }) => {
+const Tablehead = ({ users }) => {
   const getUserKeys = () => {
     let headers = Object.keys(users[0])
       .copyWithin(4, 6)
@@ -21,11 +20,7 @@ const Tablehead = ({ users: { users, loading } }) => {
 };
 
 Tablehead.propTypes = {
-  users: PropTypes.object
+  users: PropTypes.array
 };
 
-const mapStateToProps = state => ({
-  users: state.users
-});
-
-export default connect(mapStateToProps, null)(Tablehead);
+export default Tablehead;

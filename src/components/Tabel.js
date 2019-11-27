@@ -28,7 +28,7 @@ const Tabel = ({ getUsers, users: { users, loading } }) => {
           <SearchField value={searchTerm} onChange={handleSearch} />
           <table className='table table-borderless'>
             <thead>
-              <Tablehead />
+              <Tablehead users={users} />
             </thead>
             <tbody>
               <Tablebody searchTerm={searchTerm} data={users} />
