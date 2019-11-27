@@ -1,11 +1,24 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 
-const Tablebody = ({ users: { users, loading } }) => {
+export const Tablebody = ({ data, searchTerm }) => {
+  const filteredUser = () => {
+    if (searchTerm !== '') {
+      let s = data.filter(item =>
+        item.name.toLowerCase().startsWith(searchTerm.toLowerCase(), 0)
+      );
+      return s;
+    } else if (searchTerm === '') {
+      return data;
+    }
+  };
+
+  const userFiltered = filteredUser();
+  console.log('afterfilter', userFiltered);
+
   return (
     <Fragment>
-      {users.map(item => (
+      {userFiltered.map(item => (
         <tr key={item.id}>
           <td>{item.name}</td>
           <td>{item.username}</td>
@@ -18,12 +31,8 @@ const Tablebody = ({ users: { users, loading } }) => {
 };
 
 Tablebody.propTypes = {
-  users: PropTypes.object,
-  loading: PropTypes.bool
+  data: PropTypes.array,
+  searchTerm: PropTypes.string
 };
 
-const mapStateToProps = state => ({
-  users: state.users
-});
-
-export default connect(mapStateToProps, null)(Tablebody);
+export default Tablebody;
